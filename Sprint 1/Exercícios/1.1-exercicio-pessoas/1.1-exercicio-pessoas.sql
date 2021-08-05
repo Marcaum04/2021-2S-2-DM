@@ -29,3 +29,27 @@ CREATE TABLE CNH(
 	decricao CHAR(11) NOT NULL UNIQUE
 );
 GO
+
+INSERT INTO PESSOA (nomePessoa)
+VALUES('MARCOS'), ('MATHEUS')
+
+SELECT * FROM PESSOA
+
+INSERT INTO TELEFONE (idPessoa, numeroTelefone)
+VALUES (1, '9999'), (1, '8888'), (2, '9999')
+GO
+
+SELECT * FROM TELEFONE
+
+INSERT INTO EMAIL (idPessoa, endEmail)
+VALUES(1, 'm.santos@gmail.com'),
+(2, 'm.machado@gmail.com')
+GO
+
+SELECT * FROM EMAIL
+
+INSERT INTO CNH (idPessoa, decricao)
+VALUES (1, '1234'), (2, '4334')
+GO
+
+SELECT * FROM CNH
