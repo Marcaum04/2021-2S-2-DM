@@ -1,0 +1,50 @@
+USE CLINICA_VETERINARIA;
+GO
+
+INSERT INTO EMPRESA(nomeEmpresa, endereco)
+VALUES('MARABRAZ', 'RUA ALFREDO'), ('CASAS BAHIA', 'RUA DO CHILE'),
+('PONTO FRIO', 'RUA MARQUES'), ('LOJÃO DO BRÁS', 'RUA ALAMEDA'),
+('CLINICA JARDIM', 'RUA ALBERTO'), ('PETZ', 'RUA JARDIM'),
+('LOJA DE RAÇÕES', 'RUA JUSCELINO'), ('VENDA DO ZÉ', 'RUA ADOLFO')
+GO
+
+INSERT INTO TIPO_PET(nomeTipo)
+VALUES ('CACHORRO'),('GATO'),
+('PASSARO'), ('ROEDOR'),
+('FURÃO')
+GO
+
+INSERT INTO DONO(nomeDono, telefone)
+VALUES ('MARCOS', '978367467'), ('VINÍCIUS', '936746247'),
+('GUSTAVO', '938748738'), ('ALONSO', '936383283'),
+('PEDRO', '9748467387')
+GO
+
+INSERT INTO RACA(nomeRaca, idTipoPet)
+VALUES ('YORKSHIRE', 1), ('PERSA', 2),
+('PAPAGAIO', 3), ('RAGDOLL', 2),
+('CHOW CHOW', 1)
+GO
+
+INSERT INTO PET(nomePet, dataNasc, idDono, idRaca)
+VALUES ('SNOW', '2015-03-12', 3, 3),
+('MINGAU', '2017-06-25', 1, 2),
+('BILLY','2012-09-01', 5, 5),
+('FLOQUINHO', '2019-12-17', 4, 4),
+('LORO', '2020-09-08', 2, 1)
+GO
+
+INSERT INTO VETERINARIO(nomeVeterinario, idEmpresa)
+VALUES('ANDRÉ', 5), ('VITÓRIA', 3),
+('MATHEUS', 8), ('GABRIEL', 4),
+('MARCOS', 6), ('LUCAS', 7),
+('SAULO', 2), ('VITOR', 1)
+GO
+
+INSERT INTO ATENDIMENTO(idPet, idVeterinario, dataAtend, horario)
+VALUES(3, 2, '2021-09-01', '11:14'), (4, 4, '2021-08-25', '11:26'),
+(2, 2, '2021-09-01', '11:14'), (5, 4, '2021-08-25', '11:26'),
+(1, 6, '2021-09-01', '11:14'), (5, 1, '2021-08-25', '11:26'),
+(2, 2, '2021-09-01', '11:14'), (4, 4, '2021-08-25', '11:26')
+GO
+
