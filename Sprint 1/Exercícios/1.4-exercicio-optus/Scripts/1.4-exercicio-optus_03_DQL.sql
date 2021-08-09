@@ -22,8 +22,8 @@ WHERE permissao = 1;
 GO
 
 --listar todos os álbuns lançados após um determinado ano de lançamento
-SELECT * FROM ALBUM
-WHERE dataLanc > '2020-20-12';
+SELECT * FROM ALBUM 
+WHERE dataLanc > '2020-10-12';
 GO
 
 --LISTAR OS DADOS DE UM USUARIO PELO EMAIL
