@@ -17,7 +17,7 @@ namespace senai_filmes_webAPI.Repositories
         /// user ID= sa; pwd= Senai@132 = Faz autenticação com SQL SERVER passando o Login e Senha
         /// Integrated Security=true = Faz autenticação com o usuario do sistema(windows)
         /// </summary>
-        private string stringConexao = @"Data Source=NOTE0113C5; initial catalog=CATALOGO; user Id=sa; pwd=Senai@132";
+        private string stringConexao = @"Data Source=NOTE0113C5\SQLEXPRESS; initial catalog=CATALOGO; user Id=sa; pwd=Senai@132";
         public void AtualizarIdCorpo(GeneroDomain generoAtualizado)
         {
             throw new NotImplementedException();
@@ -33,14 +33,48 @@ namespace senai_filmes_webAPI.Repositories
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Cadastrar um novo Gênero.
+        /// </summary>
+        /// <param name="novoGenero">Objeto novoGenero com as informacoes que serão cadastradas.</param>
         public void Cadastrar(GeneroDomain novoGenero)
         {
-            throw new NotImplementedException();
+            // Declara a conexão passando a string de conexão como parâmetro
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                // Declara a query que será executada
+                string queryInsert = "INSERT INTO GENERO (nomeGenero) VALUES (@nomeGenero)";
+
+                // Declara o SqlCommand cmd passando a query que será executada e a conexão como parâmetros
+                using (SqlCommand cmd = new SqlCommand(queryInsert, con))
+                {
+                    // Passa o valor do parâmetro @nomeGenero
+                    cmd.Parameters.AddWithValue("@nomeGenero", novoGenero.nomeGenero);
+
+                    // Abre a conexão com banco de dados
+                    con.Open();
+
+                    // Executa a Query
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public void Deletar(int idGenero)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string queryDelete = "DELETE FROM GENERO WHERE idGenero = @id";
+
+                using (SqlCommand cmd = new SqlCommand(queryDelete, con))
+                {
+                    cmd.Parameters.AddWithValue("@id", idGenero);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         /// <summary>

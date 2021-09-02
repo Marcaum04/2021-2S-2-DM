@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace senai_filmes_webAPI.Controllers
 {
     //Define que o tipo de resposta da API será no formato JSON
-    [Produces("applicaton/json")]
+    [Produces("application/json")]
 
     //Define que a rota de um requisição será no formato domínio/api/nomeController.
     //ex: http://localhost:5000/api/generos
@@ -51,6 +51,30 @@ namespace senai_filmes_webAPI.Controllers
 
             //Retorna os status code 200(OK) com a lista generos no formato JSON
             return Ok(ListaGeneros);
+        }
+
+        [HttpPost]
+        public IActionResult Post(GeneroDomain novoGenero)
+        {
+            //Fazer a chamada para o método .Cadastrar();
+            _GeneroRepository.Cadastrar(novoGenero);
+
+            //Retorma um status code 201 - Created
+            return StatusCode(201);
+        }
+
+        /// <summary>
+        /// Deleta um gênero existente
+        /// </summary>
+        /// <param name="id">id do gênero que será deletado</param>
+        /// <returns>Um status code 204 - No Content</returns>
+        /// ex: http://localhost:5000/api/generos/10
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _GeneroRepository.Deletar(id);
+
+            return StatusCode(204);
         }
     }
 }
