@@ -53,6 +53,20 @@ namespace senai_filmes_webAPI.Controllers
             return Ok(ListaGeneros);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            GeneroDomain generoBuscado = _GeneroRepository.BuscarPorId(id);
+
+            if (generoBuscado == null)
+            {
+                return NotFound("Nenhum genero encontrado!");
+            }
+
+            return Ok(generoBuscado);
+            //return StatusCode(200, generoBuscado)
+        }
+
         [HttpPost]
         public IActionResult Post(GeneroDomain novoGenero)
         {
