@@ -17,15 +17,45 @@ namespace senai_filmes_webAPI.Repositories
         /// user ID= sa; pwd= Senai@132 = Faz autenticação com SQL SERVER passando o Login e Senha
         /// Integrated Security=true = Faz autenticação com o usuario do sistema(windows)
         /// </summary>
-        private string stringConexao = @"Data Source=NOTE0113C5\SQLEXPRESS; initial catalog=CATALOGO; user Id=sa; pwd=Senai@132";
+        //private string stringConexao = @"Data Source=NOTE0113C5\SQLEXPRESS; initial catalog=CATALOGO; user Id=sa; pwd=Senai@132";
+        private string stringConexao = @"Data Source=MARCAUM\SQLEXPRESS; initial catalog=CATALOGO; user Id=sa; pwd=senai@132";
         public void AtualizarIdCorpo(GeneroDomain generoAtualizado)
         {
-            throw new NotImplementedException();
+            if (generoAtualizado.nomeGenero != null)
+            {
+                using (SqlConnection con = new SqlConnection(stringConexao))
+                {
+                    string queryUpdateBody = "UPDATE GENERO SET nomeGenero = @novoNomeGen WHERE idGenero = @idGenAtualizado";
+
+                    using (SqlCommand cmd = new SqlCommand(queryUpdateBody, con))
+                    {
+                        cmd.Parameters.AddWithValue("@novoNomeGen", generoAtualizado.nomeGenero);
+                        cmd.Parameters.AddWithValue("@idGenAtualizado", generoAtualizado.idGenero);
+
+                        con.Open();
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
         }
 
         public void AtualizarIdUrl(int idGenero, GeneroDomain generoAtualizado)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string queryUpdateUrl = "UPDATE GENERO SET nomeGenero = @novoNomeGen WHERE idGenero = @idGenAtualizado";
+
+                using (SqlCommand cmd = new SqlCommand(queryUpdateUrl, con))
+                {
+                    cmd.Parameters.AddWithValue("@novoNomeGen", generoAtualizado.nomeGenero);
+                    cmd.Parameters.AddWithValue("@idGenAtualizado", idGenero);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public GeneroDomain BuscarPorId(int idGenero)
