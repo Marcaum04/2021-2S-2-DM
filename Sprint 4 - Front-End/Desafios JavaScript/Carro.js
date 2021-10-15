@@ -16,7 +16,10 @@ isTruthy.metodo1 = function metodo1(valor) {
 }
 
 // Invoque a função criada acima, passando todos os tipos de valores `falsy`.
-    
+    console.log(isTruthy.metodo1("true")), // false
+    console.log(isTruthy.metodo1(true)), // true
+    console.log(isTruthy.metodo1(1)), // true
+    console.log(isTruthy.metodo1(2)) // false
 
 /*
 Invoque a função criada acima passando como parâmetro 10 valores `truthy`.
@@ -36,34 +39,54 @@ seguintes propriedades (os valores devem ser do tipo mostrado abaixo):
 - `quantidadePessoas` - Number - zero por padrão
 */
 
+var carro = new Object();
+
+carro.marca = "Fiat";
+carro.modelo = "Fiat toro";
+carro.placa = "E37EA9";
+carro.ano = "2005";
+carro.cor = "Verde salomão";
+carro.quantasPortas = "8";
+carro.assentos = "16";
+carro.quantidadePessoas = "6";
 
 /*
 Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor
 passado por parâmetro.
 */
-
+carro.mudarCor = function mudarCor(cor) {
+    carro.cor = cor;
+} 
 
 /*
 Crie um método chamado `obterCor`, que retorne a cor do carro.
 */
-
+carro.obterCor = function obterCor() {
+    console.log(`A cor do seu carro é ${carro.cor}`)
+}
 
 /*
 Crie um método chamado `obterModelo` que retorne o modelo do carro.
 */
-
+carro.obterModelo = function obterModelo() {
+    return carro.modelo
+}
 
 /*
 Crie um método chamado `obterMarca` que retorne a marca do carro.
 */
-
+carro.obterMarca = function obterMarca() {
+    return carro.marca
+}
 
 /*
 Crie um método chamado `obterMarcaModelo`, que retorne:
 "Esse carro é um [MARCA] [MODELO]"
 Para retornar os valores de marca e modelo, utilize os métodos criados.
 */
-
+carro.obterMarcaModelo = function obterMarcaModelo() {
+    return `Esse carro é um ${carro.obterMarca} ${carro.obterModelo}`
+}
 
 /*
 Crie um método que irá adicionar pessoas no carro. Esse método terá as
