@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,35 +47,45 @@
 
         // 1.   Liste somente os personagens cuja editora seja Marvel;
         //      
-                console.log("1. Liste somente os personagens cuja editora seja Marvel");
-
-                let pMarvel = personagens.filter(p => p.editora == "Marvel");
-
-                console.log(pMarvel)
+        console.log("1. Liste somente os personagens cuja editora seja Marvel");
+        let pMarvel = personagens.filter(p => p.editora == "Marvel");
+        console.log(pMarvel)
 
         // 2.	Liste somente os personagem cuja data de Aparição seja superior a 1950;
         //
-                console.log("2.	Liste somente os personagem cuja data de Aparição seja superior a 1950");
-
-                let pAparicao = personagens.filter(p => p.dataAparicao > 1950);
-
-                console.log(pAparicao)
+        console.log("2.	Liste somente os personagem cuja data de Aparição seja superior a 1950");
+        let pAparicao = personagens.filter(p => p.dataAparicao > 1950);
+        console.log(pAparicao)
 
         // 3.	Some a idade de todos os personagens;
         //
-        console.log("2.	Liste somente os personagem cuja data de Aparição seja superior a 1950");
+        console.log("3.	Some a idade de todos os personagens");
+        anoAtual = parseInt(new Date().getFullYear());
+        const todasIdades = personagens.map(p => anoAtual - p.dataAparicao).reduce((a, b) => a + b, 0)
+        console.log(todasIdades)
 
-let pAparicao = personagens.filter(p => p.dataAparicao > 1950);
-
-console.log(pAparicao)
         // 4.	Traga somente os nomes dos personagens;
         //
+        console.log("4.	Traga somente os nomes dos personagens");
+        const nomes = personagens.map(p => p.nome);
+        console.log(nomes)
 
         // 5.	Adicione mais um personagem chamado Capitã Marvel, data de Aparição 1977 e editora Marvel;
         //
+        console.log("5.	Adicione mais um personagem chamado Capitã Marvel, data de Aparição 1977 e editora Marvel");
+        const CapitaMarvel = {
+            nome: "Capitã Marvel",
+            dataAparicao: 1977,
+            editora: "Marvel"
+        }
+
+        personagens.push(CapitaMarvel)
+        console.log(personagens)
 
         // 6. Mostre a quantidade de personagens da Marvel que possuem na lista
         //
+        console.log("6. Mostre a quantidade de personagens da Marvel que possuem na lista");
+        console.log(pMarvel)
 
         // 7. Mostre o nome e a idade dos personagens
         // 
