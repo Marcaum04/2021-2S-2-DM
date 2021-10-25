@@ -21,7 +21,7 @@ export default class Repositorios extends Component {
     //funcao nativa JS, ele é uma API com métodos.
 
     //dentro dos parenteses vamos informar qual é o end point.
-    fetch('//api.github.com/user/' + this.state.login + '/repos')
+    fetch('//api.github.com/users/' + this.state.login + '/repos')
       //por padrao ele sempre inicia como GET.
 
       .then(resposta => resposta.json())

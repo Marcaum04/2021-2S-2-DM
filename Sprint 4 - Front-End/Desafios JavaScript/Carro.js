@@ -46,9 +46,9 @@ carro.modelo = "Fiat toro";
 carro.placa = "E37EA9";
 carro.ano = "2005";
 carro.cor = "Verde salomão";
-carro.quantasPortas = "8";
-carro.assentos = "16";
-carro.quantidadePessoas = "6";
+carro.quantasPortas = "4";
+carro.assentos = "5";
+carro.quantidadePessoas = "0";
 
 /*
 Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor
