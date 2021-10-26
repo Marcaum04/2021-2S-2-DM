@@ -57,6 +57,7 @@ h2{
 
 table{
   margin-top: 50px;
+  border: purple solid 5px;
 }
 
 table th{
@@ -65,8 +66,22 @@ table th{
   font-size: 20px;
 }
 
-hr{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 100%;
+table tr{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: purple solid 3px;
+
+  padding: 10px 5px;
+}
+
+table td{
+  color: white;
+  width: 300px;
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
