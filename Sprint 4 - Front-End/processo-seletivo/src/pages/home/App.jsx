@@ -6,52 +6,78 @@ export default class Repositorios extends Component {
     super(props);
     this.state = {
       listaRepositorios: [],
-      id: 0,
-      login: '',
-      name: '',
-      description: '',
-      size: 0,
-      created_at: ''
+      nomeUsuario: ''
     }
   };
 
-  buscarUsuarioRepositorios = () => {
+  componentDidMount() {
+  }
+
+  atualizaEstadoPesquisa = async (event) => {
+    await this.setState({
+      nomeUsuario: event.target.value
+    });
+
+    console.log(this.state.nomeUsuario);
+  }
+
+  buscarUsuarioRepositorios = async (event) => {
+    event.preventDefault()
+
     console.log('agora vamos fazer a chamada para a api.')
 
-    //funcao nativa JS, ele é uma API com métodos.
-
-    //dentro dos parenteses vamos informar qual é o end point.
-    fetch('//api.github.com/users/' + this.state.login + '/repos')
-      //por padrao ele sempre inicia como GET.
-
+    fetch(`//api.github.com/users/${this.state.nomeUsuario}/repos?per_page=10`)
       .then(resposta => resposta.json())
-
-      //.then( dados => console.log(dados.json()))
-
-      // quando vc tiver uma retorno, vc vai trazer essa resposta em json.
-
-      // Define o tipo de dados do retorno da requisicao como JSON.
-
-      // .then( resposta => resposta.json())
-
-      // Atualiza o state listaTiposEventos com os dados obtidos em formato json.
-      .then(dados => this.setState({ listaTiposEventos: dados }))
-
-      //caso ocorre algum erro, mostra no console do navegador
-
+      .then(dados => this.setState({ listaRepositorios: dados }))
       .catch(erro => console.log(erro))
+
+      await console.log(this.state.listaRepositorios)
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Page Home</h1>
+      <div>
+        <header className='header'>
+          <h1>GitHub - Repositories</h1>
+          <hr />
         </header>
         <main>
-          <section>
-            <h2>Lista de Repositorios do {this.state.login}</h2>
-            
+          <section className="section-1">
+            <h2>Usuário a ser buscado</h2>
+            <form onSubmit={this.buscarUsuarioRepositorios}>
+              <input onChange={this.atualizaEstadoPesquisa} type="text" placeholder="   Digite um usuário" />
+              <button type="submit" disable={this.state.nomeUsuario === '' ? 'none' : ''}>Buscar</button>
+            </form>
+            <hr />
+          </section>
+          <section className="section-2">
+            <h2>Lista de Repositorios</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Repositórios de {this.state.nomeUsuario}</th>
+                  <th>Criador</th>
+                  <th>Descrição</th>
+                  <th>Tamanho</th>
+                  <th>Criado em</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  this.state.listaRepositorios.map((Repositorio) => {
+                    return (
+                      <tr key={Repositorio.id}>
+                        <td>{Repositorio.name}</td>
+                        <td>{Repositorio.owner.login}</td>
+                        <td>{Repositorio.description}</td>
+                        <td>{Repositorio.size}</td>
+                        <td>{Repositorio.created_at}</td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
           </section>
         </main>
       </div>
