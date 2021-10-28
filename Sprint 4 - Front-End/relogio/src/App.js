@@ -49,8 +49,8 @@ class Clock extends React.Component {
         <h1>Relógio</h1>
         <DataFormatada date={this.state.date} />
         <div className="flex">
-        <button type="submit" className="button" onClick={() => this.pausarTempo()}>Parar</button>
-        <button type="submit" className="button" onClick={() => this.despausarTempo()}>Continuar</button>
+        <button type="submit" className="button parar" onClick={() => this.pausarTempo()}>Parar</button>
+        <button type="submit" className="button continuar" onClick={() => this.despausarTempo()}>Continuar</button>
         </div>
       </div>
     )
