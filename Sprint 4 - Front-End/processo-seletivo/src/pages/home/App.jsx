@@ -47,7 +47,7 @@ export default class Repositorios extends Component {
           </section>
           <section className="section-2">
             <h2>Lista de Repositorios</h2>
-            <table>
+            <table id="tabela-lista">
               <thead>
                 <tr>
                   <th>Repositórios de {this.state.nomeUsuario}</th>
@@ -57,7 +57,7 @@ export default class Repositorios extends Component {
                   <th>Criado em</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="tabela-lista-corpo">
                 {
                   this.state.listaRepositorios.map((Repositorio) => {
                     return (

@@ -13,6 +13,10 @@
   flex-direction: column;
 }
 
+main{
+  padding: 20px;
+}
+
 h1 {
   color: white;
   font-size: 50px;
@@ -27,8 +31,8 @@ h1 {
 }
 
 .section-1 input{
-  height: 30px;
-  width: 300px;
+  height: 45px;
+  width: 350px;
   background-color: rgb(180, 179, 180);
   border: none;
 
@@ -36,8 +40,8 @@ h1 {
 }
 
 .section-1 button{
-  height: 30px;
-  width: 60px;
+  height: 45px;
+  width: 80px;
   color: white;
   background-color: purple;
   border: none;
@@ -55,33 +59,43 @@ h2{
   flex-direction: column;
 }
 
-table{
-  margin-top: 50px;
-  border: purple solid 5px;
+#tabela-lista {
+  font-weight: lighter;
+  border-collapse: collapse;
+  text-align: left;
+  table-layout: fixed;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 12px;
 }
 
-table th{
+#tabela-lista td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+}
+
+#tabela-lista td,
+#tabela-lista th {
+  text-align: left;
+  border: 1px solid #f6f6f6;
+  padding: 8px;
   color: white;
-  width: 300px;
-  font-size: 20px;
 }
 
-table tr{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: purple solid 3px;
-
-  padding: 10px 5px;
+#tabela-lista tr:nth-child(even) {
+  background-color: #fff;
 }
 
-table td{
+#tabela-lista tr:hover {
+  background-color: #ddd;
+}
+
+#tabela-lista th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: purple;
   color: white;
-  width: 300px;
-  font-size: 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
 }
