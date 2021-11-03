@@ -66,7 +66,7 @@ export default class Repositorios extends Component {
                         <td>{Repositorio.owner.login}</td>
                         <td>{Repositorio.description}</td>
                         <td>{Repositorio.size}</td>
-                        <td>{Repositorio.created_at}</td>
+                        <td>{new Date(Repositorio.created_at).toLocaleDateString('pt-br')}</td>
                       </tr>
                     )
                   })

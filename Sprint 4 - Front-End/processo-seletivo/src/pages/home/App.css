@@ -35,6 +35,7 @@ h1 {
   width: 350px;
   background-color: rgb(180, 179, 180);
   border: none;
+  padding-left: 10px;
 
   margin-bottom: 20px;
 }
